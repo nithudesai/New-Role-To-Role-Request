@@ -177,14 +177,14 @@ with st.form("form1", clear_on_submit = True):
     # print form responses
     if submit:
 
-        formResponses = "Environment:" + str(selected_environment) + "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
+        formResponses="Environment:" + str(selected_environment) + "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
 
             # open snowflake connection
         conn = snowflake.connector.connect(**st.secrets["snowflake"])
 
         # insert new form submitted timestamp to table
         #parse_json(formResponses)
-        sql = "INSERT INTO form_submissions (request_id, form_submitted_timestamp,form_resp) VALUES (request_id_seq.nextval, DEFAULT, parse_json(formResponses))"
+        sql = "INSERT INTO form_submissions (request_id, form_submitted_timestamp,form_resp) VALUES (request_id_seq.nextval, DEFAULT, str(formResponses))"
         insert_submitted_form_timestamp(sql)
     
         # obtain new request_id sequence
@@ -196,8 +196,8 @@ with st.form("form1", clear_on_submit = True):
 
         st.header('Form Responses')
         st.write(formResponses)
-        st.write("Environment(s): ", selected_environment)
-        st.write("Type of Request: ", selected_requestType)
-        st.write("Selected Source Roles: ", str(Selected_Source_Values)[1:-1])
-        st.write("Selected Target Roles: ", Selected_Target_Values)
-        st.write("Reason for Request: ", reasonForRequest)
+        #st.write("Environment(s): ", selected_environment)
+        #st.write("Type of Request: ", selected_requestType)
+        #st.write("Selected Source Roles: ", str(Selected_Source_Values)[1:-1])
+        #st.write("Selected Target Roles: ", Selected_Target_Values)
+        #st.write("Reason for Request: ", reasonForRequest)
