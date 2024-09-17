@@ -6,7 +6,16 @@ def get_sf_dropdown_values(sql):
     with conn.cursor() as cursor:
         cursor.execute(sql)
         return cursor.fetch_pandas_all()
-        
+
+def get_request_id(sql):
+    with conn.cursor() as cursor:
+        cursor.execute(sql)
+        return cursor.fetchone()[0]
+
+def insert_submitted_form_timestamp(sql):
+    with conn.cursor() as cursor:
+        cursor.execute(sql)
+    
 # open snowflake connection
 conn = snowflake.connector.connect(**st.secrets["snowflake"])
 
