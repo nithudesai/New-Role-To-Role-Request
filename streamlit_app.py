@@ -199,7 +199,8 @@ with st.form("form1", clear_on_submit = True):
         #sql = "INSERT INTO form_submissions2 (request_id, req_env) select request_id_seq.nextval, " + "'" + selected_environment + "'"
         #insert_submitted_form_timestamp(sql)
 
-        sql = "INSERT INTO form_submissions (request_id, form_resp) select request_id_seq.nextval, " + "'" + formResponses + "'"
+        #sql = "INSERT INTO form_submissions (request_id, form_resp) select request_id_seq.nextval, " + "'" + formResponses + "'"
+        sql = "INSERT INTO form_submissions3 (form_resp) select  formResponses 
         insert_submitted_form_timestamp(sql)
         
         # obtain new request_id sequence
