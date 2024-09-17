@@ -168,7 +168,9 @@ with st.form("form1", clear_on_submit = True):
     if submit:
         st.header('Form Responses')
         st.write("Environment(s): ", selected_environment)
-        st.write("Type of Request: ", seelcted_requestType)
+        st.write("Type of Request: ", selected_requestType)
+        st.write("Selected Roles: ", FrRoleValues)
+        st.write("Selected prj/svc Roles: ", PrjRoleValues)
         # TODO add role options 
     
         st.write("Reason for Request: ", reasonForRequest)
