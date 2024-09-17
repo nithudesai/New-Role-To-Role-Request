@@ -46,8 +46,8 @@ st.header('Snowflake Role Request Form')
 selected_environment = st.selectbox(
    "Environment(s)",
    ["DEV", "TST", "PRD"],
-   index=None
-  key='db_env'
+   index=None,
+   key='db_env'
 )
 
 selected_requestType = st.selectbox(
