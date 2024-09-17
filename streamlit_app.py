@@ -13,42 +13,42 @@ conn = snowflake.connector.connect(**st.secrets["snowflake"])
 # populate dropdown values from SF queries - TODO insert more queries
 
 # Dev Roles
-sql = "select name from FR_ROLES where name ilike '%dev%' UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from FR_ROLES where name ilike '%_dev_%' UNION SELECT 'OTHER' ORDER BY 1 "
 Dev_Func_Roles_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from PRJ_ROLES  where name ilike '%dev%' ORDER BY 1"
+sql = "select name from PRJ_ROLES  where name ilike '%_dev_%' ORDER BY 1"
 Dev_Prj_Roles_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from PRJ_ROLES  where name ilike '%dev%' UNION SELECT name from FR_ROLES   where name ilike '%dev%' UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from PRJ_ROLES  where name ilike '%_dev_%' UNION SELECT name from FR_ROLES   where name ilike '%_dev_%' UNION SELECT 'OTHER' ORDER BY 1 "
 Dev_FR_PR_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from SVC_ROLES  where name ilike '%dev%'  UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from SVC_ROLES  where name ilike '%_dev_%'  UNION SELECT 'OTHER' ORDER BY 1 "
 Dev_Svc_Roles_Values = get_sf_dropdown_values(sql)
 
 # Tst Roles
-sql = "select name from FR_ROLES where name ilike '%tst%'  UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from FR_ROLES where name ilike '%_tst_%'  UNION SELECT 'OTHER' ORDER BY 1 "
 Tst_Func_Roles_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from PRJ_ROLES  where name ilike '%tst%' ORDER BY 1"
+sql = "select name from PRJ_ROLES  where name ilike '%_tst_%' ORDER BY 1"
 Tst_Prj_Roles_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from PRJ_ROLES   where name ilike '%tst%' UNION SELECT name from FR_ROLES  where name ilike '%tst%' UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from PRJ_ROLES   where name ilike '%_tst_%' UNION SELECT name from FR_ROLES  where name ilike '%_tst%_' UNION SELECT 'OTHER' ORDER BY 1 "
 Tst_FR_PR_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from SVC_ROLES where name ilike '%tst%' UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from SVC_ROLES where name ilike '%_tst%_' UNION SELECT 'OTHER' ORDER BY 1 "
 Tst_Svc_Roles_Values = get_sf_dropdown_values(sql)
 
 # Prod Roles
-sql = "select name from FR_ROLES where name ilike '%prd%'  UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from FR_ROLES where name ilike '%_prd_%'  UNION SELECT 'OTHER' ORDER BY 1 "
 Prd_Func_Roles_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from PRJ_ROLES  where name ilike '%prd%' ORDER BY 1"
+sql = "select name from PRJ_ROLES  where name ilike '%_prd_%' ORDER BY 1"
 Prd_Prj_Roles_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from PRJ_ROLES   where name ilike '%prd%' UNION SELECT name from FR_ROLES  where name ilike '%prd%' UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from PRJ_ROLES   where name ilike '%_prd_%' UNION SELECT name from FR_ROLES  where name ilike '%_prd_%' UNION SELECT 'OTHER' ORDER BY 1 "
 Prd_FR_PR_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from SVC_ROLES where name ilike '%prd%' UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from SVC_ROLES where name ilike '%_prd_%' UNION SELECT 'OTHER' ORDER BY 1 "
 Prd_Svc_Roles_Values = get_sf_dropdown_values(sql)
 
 # close snowflake connection
@@ -167,8 +167,8 @@ with st.form("form1", clear_on_submit = True):
     # print form responses
     if submit:
         st.header('Form Responses')
-        st.write("Environment(s): ", environments)
-        st.write("Type of Request: ", requestType)
+        st.write("Environment(s): ", selected_environment)
+        st.write("Type of Request: ", seelcted_requestType)
         # TODO add role options 
     
         st.write("Reason for Request: ", reasonForRequest)
