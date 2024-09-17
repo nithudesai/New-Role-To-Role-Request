@@ -178,7 +178,7 @@ with st.form("form1", clear_on_submit = True):
     if submit:
 
         #formResponses="Environment:" + str(selected_environment) + "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
-        formResponses=""Environment: "" + """ + str(selected_environment) + """ 
+        formResponses= """ + "Environment: " + """ + """ + str(selected_environment) + """ 
         #+ "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] 
         #                + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
         
