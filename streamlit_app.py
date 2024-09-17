@@ -188,7 +188,10 @@ with st.form("form1", clear_on_submit = True):
         # insert new form submitted timestamp to table
         #parse_json(formResponses)
 
-        sql = "INSERT INTO form_submissions1 (request_id, form_submitted_timestamp) VALUES ( request_id_seq.nextval,DEFAULT)
+        sql = "INSERT INTO form_submissions1 (request_id, form_submitted_timestamp) VALUES ( request_id_seq.nextval,DEFAULT)"
+        insert_submitted_form_timestamp(sql)
+
+        sql = "INSERT INTO form_submissions2 (request_id, req_typ) select request_id_seq.nextval, str(selected_requestType)"
         insert_submitted_form_timestamp(sql)
     
         # obtain new request_id sequence
