@@ -183,12 +183,13 @@ with st.form("form1", clear_on_submit = True):
         conn = snowflake.connector.connect(**st.secrets["snowflake"])
 
         # insert new form submitted timestamp to table
-        sql = "INSERT INTO form_submissions (request_id, form_submitted_timestamp, form_resp) VALUES (request_id_seq.nextval, DEFAULT,  formResponses)"
+        #parse_json(formResponses)
+        sql = "INSERT INTO form_submissions (request_id, form_submitted_timestamp) VALUES (request_id_seq.nextval, DEFAULT))"
         insert_submitted_form_timestamp(sql)
     
         # obtain new request_id sequence
-        sql = "SELECT request_id FROM form_submissions ORDER BY form_submitted_timestamp DESC LIMIT 1"
-        formId = get_request_id(sql)
+        #sql = "SELECT request_id FROM form_submissions ORDER BY form_submitted_timestamp DESC LIMIT 1"
+        #formId = get_request_id(sql)
     
         # close snowflake connection
         conn.close()
