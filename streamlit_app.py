@@ -59,38 +59,35 @@ selected_requestType = st.selectbox(
 
 with st.form("form1", clear_on_submit = True):
 
-
     col1, col2 = st.columns(2)
 
-    If selected_environment == ‘DEV’:
-
-	    If selected_requestType == ‘Grant Functional Role(s) to a Project Role’:
-    		FrRoleValues = col1.multiselect(
-        		"Choose functional role(s)",
-        		(Dev_Func_Roles_Values),
-        		placeholder="roles you'd like to add to target project role",
-       	 	help="Choose functional roles you'd like to add to your project role"
-    		)
-
-  	           PrjRoleValues = col2.selectbox(
-        		"Choose a target Project role",
-        		(Dev_Prj_Roles_Values),
-        		index=None,
-        		placeholder="role you'd like to add the additional access",
-        		help="Choose a target project tole that you'd like to add the additional access"
-   		 )
-	    elif selected_requestType == ‘Grant Functional/Project Role(s) to a Service Role’:
-		col3, col4 = st.columns(2)
-		FrPrRoleValues = col3.multiselect(
-        		"Choose functional/project role(s)",
-        		(Dev_FR_PR_Values),
-    		)
-
-		SvcRoleValues = col4.selectbox(
-        		"Choose a target Service Acct role",
-        		(Dev_Svc_Roles_Values),
-        		index=None,
-    		)
+    if selected_environment == 'DEV':
+       if selected_requestType == ‘Grant Functional Role(s) to a Project Role’:
+          FrRoleValues = col1.multiselect(
+          "Choose functional role(s)",
+          (Dev_Func_Roles_Values),
+          placeholder="roles you'd like to add to target project role",
+          help="Choose functional roles you'd like to add to your project role"
+          )
+          PrjRoleValues = col2.selectbox(
+          "Choose a target Project role",
+          (Dev_Prj_Roles_Values),
+          index=None,
+          placeholder="role you'd like to add the additional access",
+          help="Choose a target project tole that you'd like to add the additional access"
+          )
+       elif selected_requestType == ‘Grant Functional/Project Role(s) to a Service Role’:
+          col3, col4 = st.columns(2)
+          FrPrRoleValues = col3.multiselect(
+          "Choose functional/project role(s)",
+          (Dev_FR_PR_Values),
+          )
+	  
+          SvcRoleValues = col4.selectbox(
+          "Choose a target Service Acct role",
+          (Dev_Svc_Roles_Values),
+          index=None,
+          )
 
     reasonForRequest = st.text_area(
         "Reason for Request",
