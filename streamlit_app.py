@@ -181,7 +181,7 @@ with st.form("form1", clear_on_submit = True):
 
             # open snowflake connection
         conn = snowflake.connector.connect(**st.secrets["snowflake"])
-request_id, form_submitted_timestamp
+
         # insert new form submitted timestamp to table
         sql = "INSERT INTO form_submissions (request_id, form_submitted_timestamp, form_resp) VALUES (request_id_seq.nextval, DEFAULT,  formResponses)"
         insert_submitted_form_timestamp(sql)
@@ -193,7 +193,6 @@ request_id, form_submitted_timestamp
         # close snowflake connection
         conn.close()
 
-    
         st.header('Form Responses')
         st.write(formResponses)
         st.write("Environment(s): ", selected_environment)
