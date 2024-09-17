@@ -166,11 +166,13 @@ with st.form("form1", clear_on_submit = True):
 
     # print form responses
     if submit:
+
+        formResponses = "Environment:" + str(selected_environment) + "\n Type of Request:" + str(selected_requestType) + "\n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] + "\n Selected Target Roles:" + "\n str(Selected_Target_Values)" + "\n Reason for Request:" + str(reasonForRequest) 
         st.header('Form Responses')
+
+        st.write(formResponses)
         st.write("Environment(s): ", selected_environment)
         st.write("Type of Request: ", selected_requestType)
         st.write("Selected Source Roles: ", str(Selected_Source_Values)[1:-1])
         st.write("Selected Target Roles: ", Selected_Target_Values)
-        # TODO add role options 
-    
         st.write("Reason for Request: ", reasonForRequest)
