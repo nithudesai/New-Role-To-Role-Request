@@ -12,16 +12,16 @@ conn = snowflake.connector.connect(**st.secrets["snowflake"])
 
 # populate dropdown values from SF queries - TODO insert more queries
 
-sql = "select name from FR_ROLES where name ilike ‘%dev% UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from FR_ROLES where name ilike '%dev%' UNION SELECT 'OTHER' ORDER BY 1 "
 Dev_Func_Roles_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from PRJ_ROLES  where name ilike ‘%dev% ORDER BY 1"
+sql = "select name from PRJ_ROLES  where name ilike '%dev%' ORDER BY 1"
 Dev_Prj_Roles_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from PRJ_ROLES  where name ilike ‘%dev% UNION SELECT name from FR_ROLES   where name ilike ‘%dev% UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from PRJ_ROLES  where name ilike '%dev%' UNION SELECT name from FR_ROLES   where name ilike ‘%dev% UNION SELECT 'OTHER' ORDER BY 1 "
 Dev_FR_PR_Values = get_sf_dropdown_values(sql)
 
-sql = "select name from SVC_ROLES  where name ilike ‘%dev%  UNION SELECT 'OTHER' ORDER BY 1 "
+sql = "select name from SVC_ROLES  where name ilike '%dev%'  UNION SELECT 'OTHER' ORDER BY 1 "
 Dev_Svc_Roles_Values = get_sf_dropdown_values(sql)
 
 
