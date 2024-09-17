@@ -78,13 +78,13 @@ with st.form("form1", clear_on_submit = True):
 
     if selected_environment == 'DEV':
        if selected_requestType == 'Grant Functional Role(s) to a Project Role':
-          FrRoleValues = col1.multiselect(
+          Selected_Source_Values = col1.multiselect(
           "Choose functional role(s)",
           (Dev_Func_Roles_Values),
           placeholder="roles you'd like to add to target project role",
           help="Choose functional roles you'd like to add to your project role"
           )
-          PrjRoleValues = col2.selectbox(
+          Selected_Target_Values = col2.selectbox(
           "Choose a target Project role",
           (Dev_Prj_Roles_Values),
           index=None,
@@ -93,24 +93,24 @@ with st.form("form1", clear_on_submit = True):
           )
        elif selected_requestType == 'Grant Functional/Project Role(s) to a Service Role':
           col3, col4 = st.columns(2)
-          FrPrRoleValues = col3.multiselect(
+          Selected_Source_Values = col3.multiselect(
           "Choose functional/project role(s)",
           (Dev_FR_PR_Values),
           )	  
-          SvcRoleValues = col4.selectbox(
+          Selected_Target_Values = col4.selectbox(
           "Choose a target Service Acct role",
           (Dev_Svc_Roles_Values),
           index=None,
           )
     elif selected_environment == 'TST':
        if selected_requestType == 'Grant Functional Role(s) to a Project Role':
-          FrRoleValues = col1.multiselect(
+          Selected_Source_Values = col1.multiselect(
           "Choose functional role(s)",
           (Tst_Func_Roles_Values),
           placeholder="roles you'd like to add to target project role",
           help="Choose functional roles you'd like to add to your project role"
           )
-          PrjRoleValues = col2.selectbox(
+          Selected_Target_Values = col2.selectbox(
           "Choose a target Project role",
           (Tst_Prj_Roles_Values),
           index=None,
@@ -119,24 +119,24 @@ with st.form("form1", clear_on_submit = True):
           )
        elif selected_requestType == 'Grant Functional/Project Role(s) to a Service Role':
           col3, col4 = st.columns(2)
-          FrPrRoleValues = col3.multiselect(
+          Selected_Source_Values = col3.multiselect(
           "Choose functional/project role(s)",
           (Tst_FR_PR_Values),
           )	  
-          SvcRoleValues = col4.selectbox(
+          Selected_Target_Values = col4.selectbox(
           "Choose a target Service Acct role",
           (Tst_Svc_Roles_Values),
           index=None,
           )
     elif selected_environment == 'PRD':
        if selected_requestType == 'Grant Functional Role(s) to a Project Role':
-          FrRoleValues = col1.multiselect(
+          Selected_Source_Values = col1.multiselect(
           "Choose functional role(s)",
           (Prd_Func_Roles_Values),
           placeholder="roles you'd like to add to target project role",
           help="Choose functional roles you'd like to add to your project role"
           )
-          PrjRoleValues = col2.selectbox(
+          Selected_Target_Values = col2.selectbox(
           "Choose a target Project role",
           (Prd_Prj_Roles_Values),
           index=None,
@@ -145,11 +145,11 @@ with st.form("form1", clear_on_submit = True):
           )
        elif selected_requestType == 'Grant Functional/Project Role(s) to a Service Role':
           col3, col4 = st.columns(2)
-          FrPrRoleValues = col3.multiselect(
+          Selected_Source_Values = col3.multiselect(
           "Choose functional/project role(s)",
           (Prd_FR_PR_Values),
           )	  
-          SvcRoleValues = col4.selectbox(
+          Selected_Target_Values = col4.selectbox(
           "Choose a target Service Acct role",
           (Prd_Svc_Roles_Values),
           index=None,
@@ -169,8 +169,8 @@ with st.form("form1", clear_on_submit = True):
         st.header('Form Responses')
         st.write("Environment(s): ", selected_environment)
         st.write("Type of Request: ", selected_requestType)
-        st.write("Selected Roles: ", FrRoleValues)
-        st.write("Selected prj/svc Roles: ", PrjRoleValues)
+        st.write("Selected Source Roles: ", Selected_Source_Values)
+        st.write("Selected Target Roles: ", Selected_Target_Values)
         # TODO add role options 
     
         st.write("Reason for Request: ", reasonForRequest)
