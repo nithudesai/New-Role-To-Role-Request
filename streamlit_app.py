@@ -54,6 +54,7 @@ selected_requestType = st.selectbox(
    "Type of Request",
    ("Grant Functional Role(s) to a Project Role", "Grant Functional/Project Role(s) to a Service Role", "Revoke Functional Role(s) from a Project Role", "Grant Functional/Project Role(s) from a Service Role"),
    index=None,
+   key='reqtyp'
 )
 
 
