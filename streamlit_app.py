@@ -62,7 +62,7 @@ with st.form("form1", clear_on_submit = True):
     col1, col2 = st.columns(2)
 
     if selected_environment == 'DEV':
-       if selected_requestType == ‘Grant Functional Role(s) to a Project Role’:
+       if selected_requestType == 'Grant Functional Role(s) to a Project Role':
           FrRoleValues = col1.multiselect(
           "Choose functional role(s)",
           (Dev_Func_Roles_Values),
@@ -76,7 +76,7 @@ with st.form("form1", clear_on_submit = True):
           placeholder="role you'd like to add the additional access",
           help="Choose a target project tole that you'd like to add the additional access"
           )
-       elif selected_requestType == ‘Grant Functional/Project Role(s) to a Service Role’:
+       elif selected_requestType == 'Grant Functional/Project Role(s) to a Service Role':
           col3, col4 = st.columns(2)
           FrPrRoleValues = col3.multiselect(
           "Choose functional/project role(s)",
