@@ -191,8 +191,14 @@ with st.form("form1", clear_on_submit = True):
         sql = "INSERT INTO form_submissions1 (request_id, form_submitted_timestamp) VALUES ( request_id_seq.nextval,DEFAULT)"
         insert_submitted_form_timestamp(sql)
 
-        sql = "INSERT INTO form_submissions2 (request_id, req_typ) select request_id_seq.nextval, identifier(selected_requestType)"
+        sql = "INSERT INTO form_submissions2 (request_id, req_typ) select request_id_seq.nextval, " + selected_requestType
         insert_submitted_form_timestamp(sql)
+
+            "INSERT INTO testtable(col1, col2) "
+    "VALUES(%(col1)s, %(col2)s)", {
+        'col1': 789,
+        'col2': 'test string3',
+        })
     
         # obtain new request_id sequence
         #sql = "SELECT request_id FROM form_submissions ORDER BY form_submitted_timestamp DESC LIMIT 1"
