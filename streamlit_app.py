@@ -43,18 +43,18 @@ conn.close()
 # create form
 st.header('Snowflake Role Request Form')
 
-    selected_environment = st.selectbox(
-        "Environment(s)",
-        ["DEV", "TST", "PRD"],
-        index=None
-        key=‘db_env’
-    )
+selected_environment = st.selectbox(
+   "Environment(s)",
+   ["DEV", "TST", "PRD"],
+   index=None
+  key=‘db_env’
+)
 
-    selected_requestType = st.selectbox(
-        "Type of Request",
-        ("Grant Functional Role(s) to a Project Role", "Grant Functional/Project Role(s) to a Service Role", "Revoke Functional Role(s) from a Project Role”, "Grant Functional/Project Role(s) from a Service Role"),
-        index=None,
-    )
+selected_requestType = st.selectbox(
+   "Type of Request",
+   ("Grant Functional Role(s) to a Project Role", "Grant Functional/Project Role(s) to a Service Role", "Revoke Functional Role(s) from a Project Role”, "Grant Functional/Project Role(s) from a Service Role"),
+   index=None,
+)
 
 
 with st.form("form1", clear_on_submit = True):
