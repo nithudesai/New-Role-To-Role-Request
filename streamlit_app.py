@@ -183,7 +183,7 @@ with st.form("form1", clear_on_submit = True):
         #+ "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] 
         #                + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
         
-        formResponses = { "selected_environment" : selected_environment , + "," + "selected_requestType" : selected_requestType }
+        formResponses = { "selected_environment" : selected_environment , "selected_requestType" : selected_requestType }
         formResponsesStr = json.dumps(formResponses)
         st.write(formResponsesStr)
         # open snowflake connection
@@ -199,8 +199,8 @@ with st.form("form1", clear_on_submit = True):
         #sql = "INSERT INTO form_submissions2 (request_id, req_env) select request_id_seq.nextval, " + "'" + selected_environment + "'"
         #insert_submitted_form_timestamp(sql)
 
-        #sql = "INSERT INTO form_submissions (request_id, form_resp) select request_id_seq.nextval, " + "'" + formResponses + "'"
-        #insert_submitted_form_timestamp(sql)
+        sql = "INSERT INTO form_submissions (request_id, form_resp) select request_id_seq.nextval, " + "'" + formResponses + "'"
+        insert_submitted_form_timestamp(sql)
         
         # obtain new request_id sequence
         #sql = "SELECT request_id FROM form_submissions ORDER BY form_submitted_timestamp DESC LIMIT 1"
