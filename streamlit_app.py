@@ -1,5 +1,6 @@
 import streamlit as st
 import snowflake.connector
+import json
 
 # execute SF queries
 def get_sf_dropdown_values(sql):
