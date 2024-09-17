@@ -47,7 +47,7 @@ selected_environment = st.selectbox(
    "Environment(s)",
    ["DEV", "TST", "PRD"],
    index=None
-  key=‘db_env’
+  key='db_env'
 )
 
 selected_requestType = st.selectbox(
