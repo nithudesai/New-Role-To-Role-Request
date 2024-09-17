@@ -191,7 +191,7 @@ with st.form("form1", clear_on_submit = True):
         sql = "INSERT INTO form_submissions1 (request_id, form_submitted_timestamp) VALUES ( request_id_seq.nextval,DEFAULT)"
         insert_submitted_form_timestamp(sql)
 
-        sql = "INSERT INTO form_submissions2 (request_id, req_typ) select request_id_seq.nextval, identifier(:selected_requestType)"
+        sql = "INSERT INTO form_submissions2 (request_id, req_typ) select request_id_seq.nextval, identifier(selected_requestType)"
         insert_submitted_form_timestamp(sql)
     
         # obtain new request_id sequence
