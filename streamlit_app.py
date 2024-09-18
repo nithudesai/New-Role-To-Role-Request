@@ -216,6 +216,6 @@ with st.form("form1", clear_on_submit = True):
         st.write(formResponses)
         #st.write("Environment(s): ", selected_environment)
         #st.write("Type of Request: ", selected_requestType)
-        #st.write("Selected Source Roles: ", str(Selected_Source_Values)[1:-1])
+        #st.write("Selected Source Roles: ", str(Selected_Source_Values))
         #st.write("Selected Target Roles: ", Selected_Target_Values)
         #st.write("Reason for Request: ", reasonForRequest)
