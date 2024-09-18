@@ -185,7 +185,7 @@ with st.form("form1", clear_on_submit = True):
         
         #formResponses = { "selected_environment" : selected_environment , "selected_requestType" : selected_requestType }
         
-        formResponses = { "Environment" : selected_environment , "Type of Request" : selected_requestType , "Selected Source Roles" : str(Selected_Source_Values)[1:-1] , "Selected Target Roles" : Selected_Target_Values ,  "Reason for Request" : reasonForRequest }
+        formResponses = { "Environment" : selected_environment , "Type of Request" : selected_requestType , "Selected Source Roles" : Selected_Source_Values , "Selected Target Roles" : Selected_Target_Values ,  "Reason for Request" : reasonForRequest }
         formResponsesStr = json.dumps(formResponses)
         st.write(formResponsesStr)
         # open snowflake connection
