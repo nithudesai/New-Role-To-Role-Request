@@ -226,5 +226,5 @@ if submit:
     #st.write("Reason for Request: ", reasonForRequest)
 
     # create button to Download form response
-    st.header('Download Form Responses')
-    st.download_button("Download File", str(formResponses),file_name= str(formId))
+    st.header('Download Request Responses')
+    st.download_button("Download File", str(formResponses),file_name= str(formId)+"_"+str(selected_requestType)+".txt")
