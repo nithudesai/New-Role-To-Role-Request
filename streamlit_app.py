@@ -216,7 +216,7 @@ with st.form("form1", clear_on_submit = True):
         conn.close()
 
         st.header('Form Responses')
-        st.write(formResponsesStr)
+        #st.write(formResponsesStr)
         
         st.write(formResponses)
         #st.write("Environment(s): ", selected_environment)
