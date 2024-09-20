@@ -202,8 +202,8 @@ with st.form("form1", clear_on_submit = True):
         #insert_submitted_form_timestamp(sql)
 
         #sql = "INSERT INTO form_submissions (request_id, form_resp) select  request_id_seq.nextval, " + "'" + formResponses + "'"
-        sql = "INSERT INTO form_submissions3 (form_resp) select parse_json(' " +  formResponsesStr + "')"
-        insert_submitted_form_timestamp(sql)
+        #sql = "INSERT INTO form_submissions3 (form_resp) select parse_json(' " +  formResponsesStr + "')"
+        #insert_submitted_form_timestamp(sql)
 
         sql = "INSERT INTO form_submissions (requested_user, request_id,form_resp) select current_user(),request_id_seq.nextval, parse_json(' " +  formResponsesStr + "')"
         insert_submitted_form_timestamp(sql)
@@ -217,6 +217,7 @@ with st.form("form1", clear_on_submit = True):
 
         st.header('Form Responses')
         st.write(formResponsesStr)
+        
         #st.write(formResponses)
         #st.write("Environment(s): ", selected_environment)
         #st.write("Type of Request: ", selected_requestType)
