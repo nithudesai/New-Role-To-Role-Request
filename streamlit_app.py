@@ -218,7 +218,7 @@ with st.form("form1", clear_on_submit = True):
         st.header('Form Responses')
         st.write(formResponsesStr)
         
-        #st.write(formResponses)
+        st.write(formResponses)
         #st.write("Environment(s): ", selected_environment)
         #st.write("Type of Request: ", selected_requestType)
         #st.write("Selected Source Roles: ", str(Selected_Source_Values))
