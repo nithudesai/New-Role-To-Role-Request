@@ -227,4 +227,4 @@ if submit:
 
     # create button to Download form response
     st.header('Download Form Responses')
-    st.download_button("Download File", str(formResponses),file_name= formId+'.'txt)
+    st.download_button("Download File", str(formResponses),file_name= str(formId))
