@@ -176,55 +176,55 @@ with st.form("form1", clear_on_submit = True):
 
     
     # print form responses
-    if submit:
-        #"Environment: ""DEV"
-        #formResponses="Environment:" + str(selected_environment) + "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
-        #formResponses= "\"" + "Environment " + "\":" + "\"" + str(selected_environment) + "\"" 
-        #+ "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] 
-        #                + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
-        
-        #formResponses = { "selected_environment" : selected_environment , "selected_requestType" : selected_requestType }
-        
-        formResponses = { "Environment" : selected_environment , "Type of Request" : selected_requestType , "Selected Source Roles" : Selected_Source_Values , "Selected Target Roles" : Selected_Target_Values ,  "Reason for Request" : reasonForRequest }
-        formResponsesStr = json.dumps(formResponses)
-
-        # open snowflake connection
-        conn = snowflake.connector.connect(**st.secrets["snowflake"])
-
-        # insert new form submitted timestamp to table
-        #parse_json(formResponses)
-
-        #sql = "INSERT INTO form_submissions1 (request_id, form_submitted_timestamp) VALUES ( request_id_seq.nextval,DEFAULT)"
-        #insert_submitted_form_timestamp(sql)
-
-        
-        #sql = "INSERT INTO form_submissions2 (request_id, req_env) select request_id_seq.nextval, " + "'" + selected_environment + "'"
-        #insert_submitted_form_timestamp(sql)
-
-        #sql = "INSERT INTO form_submissions (request_id, form_resp) select  request_id_seq.nextval, " + "'" + formResponses + "'"
-        #sql = "INSERT INTO form_submissions3 (form_resp) select parse_json(' " +  formResponsesStr + "')"
-        #insert_submitted_form_timestamp(sql)
-
-        sql = "INSERT INTO form_submissions (requested_user, request_id,form_resp) select current_user(),request_id_seq.nextval, parse_json(' " +  formResponsesStr + "')"
-        insert_submitted_form_timestamp(sql)
-        
-        # obtain new request_id sequence
-        #sql = "SELECT request_id FROM form_submissions ORDER BY form_submitted_timestamp DESC LIMIT 1"
-        #formId = get_request_id(sql)
+if submit:
+    #"Environment: ""DEV"
+    #formResponses="Environment:" + str(selected_environment) + "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
+    #formResponses= "\"" + "Environment " + "\":" + "\"" + str(selected_environment) + "\"" 
+    #+ "  \n Type of Request:" + str(selected_requestType) + "  \n Selected Source Roles:" + str(Selected_Source_Values)[1:-1] 
+    #                + "  \n Selected Target Roles:" +  str(Selected_Target_Values) + "  \n Reason for Request:" + str(reasonForRequest) 
     
-        # close snowflake connection
-        conn.close()
-
-        st.header('Form Responses')
-        #st.write(formResponsesStr)
+    #formResponses = { "selected_environment" : selected_environment , "selected_requestType" : selected_requestType }
         
-        st.write(formResponses)
-        #st.write("Environment(s): ", selected_environment)
-        #st.write("Type of Request: ", selected_requestType)
-        #st.write("Selected Source Roles: ", str(Selected_Source_Values))
-        #st.write("Selected Target Roles: ", Selected_Target_Values)
-        #st.write("Reason for Request: ", reasonForRequest)
+    formResponses = { "Environment" : selected_environment , "Type of Request" : selected_requestType , "Selected Source Roles" : Selected_Source_Values , "Selected Target Roles" : Selected_Target_Values ,  "Reason for Request" : reasonForRequest }
+    formResponsesStr = json.dumps(formResponses)
 
-        # create button to Download form response
-        st.header('Download Form Responses')
-        st.download_button("Download File", formResponses)
+    # open snowflake connection
+    conn = snowflake.connector.connect(**st.secrets["snowflake"])
+
+    # insert new form submitted timestamp to table
+    #parse_json(formResponses)
+
+    #sql = "INSERT INTO form_submissions1 (request_id, form_submitted_timestamp) VALUES ( request_id_seq.nextval,DEFAULT)"
+    #insert_submitted_form_timestamp(sql)
+
+    
+    #sql = "INSERT INTO form_submissions2 (request_id, req_env) select request_id_seq.nextval, " + "'" + selected_environment + "'"
+    #insert_submitted_form_timestamp(sql)
+
+    #sql = "INSERT INTO form_submissions (request_id, form_resp) select  request_id_seq.nextval, " + "'" + formResponses + "'"
+    #sql = "INSERT INTO form_submissions3 (form_resp) select parse_json(' " +  formResponsesStr + "')"
+    #insert_submitted_form_timestamp(sql)
+
+    sql = "INSERT INTO form_submissions (requested_user, request_id,form_resp) select current_user(),request_id_seq.nextval, parse_json(' " +  formResponsesStr + "')"
+    insert_submitted_form_timestamp(sql)
+    
+    # obtain new request_id sequence
+    #sql = "SELECT request_id FROM form_submissions ORDER BY form_submitted_timestamp DESC LIMIT 1"
+    #formId = get_request_id(sql)
+
+    # close snowflake connection
+    conn.close()
+
+    st.header('Form Responses')
+    #st.write(formResponsesStr)
+    
+    st.write(formResponses)
+    #st.write("Environment(s): ", selected_environment)
+    #st.write("Type of Request: ", selected_requestType)
+    #st.write("Selected Source Roles: ", str(Selected_Source_Values))
+    #st.write("Selected Target Roles: ", Selected_Target_Values)
+    #st.write("Reason for Request: ", reasonForRequest)
+
+    # create button to Download form response
+    st.header('Download Form Responses')
+    st.download_button("Download File", formResponses)
