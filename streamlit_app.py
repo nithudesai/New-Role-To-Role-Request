@@ -65,7 +65,7 @@ Prd_Svc_Roles_Values = get_sf_dropdown_values(sql)
 conn.close()
 
 # create form
-st.header('Snowflake Role Request Form')
+st.header('Snowflake Role Request')
 
 selected_environment = st.selectbox(
    "Environment(s)",
@@ -172,7 +172,7 @@ with st.form("form1", clear_on_submit = True):
     )
 
     # TODO - add validation to enforce mandatory fields
-    submit = st.form_submit_button("Submit")
+    submit = st.form_submit_button("Generate Request")
 
     
     # print form responses
@@ -209,8 +209,8 @@ if submit:
     insert_submitted_form_timestamp(sql)
     
     # obtain new request_id sequence
-    #sql = "SELECT request_id FROM form_submissions ORDER BY form_submitted_timestamp DESC LIMIT 1"
-    #formId = get_request_id(sql)
+    sql = "SELECT request_id FROM form_submissions ORDER BY form_submitted_timestamp DESC LIMIT 1"
+    formId = get_request_id(sql)
 
     # close snowflake connection
     conn.close()
@@ -227,4 +227,4 @@ if submit:
 
     # create button to Download form response
     st.header('Download Form Responses')
-    st.download_button("Download File", str(formResponses))
+    st.download_button("Download File", str(formResponses),file_name= formId+'.'txt)
