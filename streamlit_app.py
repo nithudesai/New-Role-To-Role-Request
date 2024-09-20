@@ -187,7 +187,7 @@ with st.form("form1", clear_on_submit = True):
         
         formResponses = { "Environment" : selected_environment , "Type of Request" : selected_requestType , "Selected Source Roles" : Selected_Source_Values , "Selected Target Roles" : Selected_Target_Values ,  "Reason for Request" : reasonForRequest }
         formResponsesStr = json.dumps(formResponses)
-        st.write(formResponsesStr)
+
         # open snowflake connection
         conn = snowflake.connector.connect(**st.secrets["snowflake"])
 
@@ -216,9 +216,14 @@ with st.form("form1", clear_on_submit = True):
         conn.close()
 
         st.header('Form Responses')
-        st.write(formResponses)
+        st.write(formResponsesStr)
+        #st.write(formResponses)
         #st.write("Environment(s): ", selected_environment)
         #st.write("Type of Request: ", selected_requestType)
         #st.write("Selected Source Roles: ", str(Selected_Source_Values))
         #st.write("Selected Target Roles: ", Selected_Target_Values)
         #st.write("Reason for Request: ", reasonForRequest)
+
+        # create button to Download form response
+        st.header('Download Form Responses')
+        st.download_button("Download File", formResponses)
