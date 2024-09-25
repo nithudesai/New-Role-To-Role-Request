@@ -94,7 +94,7 @@ with st.form("form1", clear_on_submit = True):
           (Dev_Prj_Roles_Values),
           index=None,
           placeholder="role you'd like to add the additional access",
-          help="Choose a target project tole that you'd like to add the additional access"
+          help="Choose a target project tole that you'd like to add the additional access",
           key='tgtvalue'
           )
           # open snowflake connection
