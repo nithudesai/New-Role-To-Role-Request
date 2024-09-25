@@ -96,7 +96,8 @@ with st.form("form1", clear_on_submit = True):
           placeholder="role you'd like to add the additional access",
           help="Choose a target project tole that you'd like to add the additional access"
           )
-           
+          sql = f"""select name from FR_ROLES where name ilike '%_{selected_environment}_%' and name ilike case when '%{Selected_Target_Value}%' ilike '%_RO%' then '%READER%' else '%_{selected_environment}_%' end  UNION SELECT 'OTHER' ORDER BY 1; """
+          Dev_Func_Roles_Values = get_sf_dropdown_values(sql) 
           Selected_Source_Values = col2.multiselect(
           "Choose functional role(s)",
           (Dev_Func_Roles_Values),
