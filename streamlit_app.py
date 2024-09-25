@@ -23,8 +23,8 @@ conn = snowflake.connector.connect(**st.secrets["snowflake"])
 # populate dropdown values from SF queries - TODO insert more queries
 
 # Dev Roles
-sql = "select name from FR_ROLES where name ilike '%_dev_%' UNION SELECT 'OTHER' ORDER BY 1 "
-Dev_Func_Roles_Values = get_sf_dropdown_values(sql)
+#sql = "select name from FR_ROLES where name ilike '%_dev_%' UNION SELECT 'OTHER' ORDER BY 1 "
+#Dev_Func_Roles_Values = get_sf_dropdown_values(sql)
 
 sql = "select name from PRJ_ROLES  where name ilike '%_dev_%' ORDER BY 1"
 Dev_Prj_Roles_Values = get_sf_dropdown_values(sql)
@@ -95,6 +95,7 @@ with st.form("form1", clear_on_submit = True):
           index=None,
           placeholder="role you'd like to add the additional access",
           help="Choose a target project tole that you'd like to add the additional access"
+          key='tgtvalue'
           )
           # open snowflake connection
           conn = snowflake.connector.connect(**st.secrets["snowflake"])
